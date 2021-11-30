@@ -2,7 +2,6 @@ from application import app, db
 from application.models import Galleries, Locations
 from flask import render_template, request, redirect, url_for, jsonify, Response
 
-
  
 @app.route('/create/location', methods=['POST'])
 def create_location():
@@ -54,21 +53,20 @@ def read_tasks():
 
 
 
-
-# @app.route('/update/location/<int:id>', methods=['PUT'])
-# def update_task(id):
-#     package = request.json
-#     location = Locations.query.get(id)
-#     task.description = package["description"]
-#     db.session.commit()
-#     return Response(f" Updated task (ID : {id}) with {task.description}", mimetype='text/plain')
+@app.route('/update/gallery/<int:id>', methods=['PUT'])
+def update_galleries(id):
+    package = request.json
+    gallery = Galleries.query.get(id)
+    gallery.gallery_name = package["description"]
+    db.session.commit()
+    return Response(f" Updated task (ID : {id}) with {gallery.gallery_name}", mimetype='text/plain')
 
     
 
-# @app.route('/delete/location/<int:id>', methods=['DELETE'])
-# def delete_task(id):
-#     task = Tasks.query.get(id)
-#     db.session.delete(task)
-#     db.session.commit()
-#     return Response(f" Deleted task with ID : {id}", mimetype='text/plain')
+@app.route('/delete/gallery/<int:id>', methods=['DELETE'])
+def delete_gallery(id):
+    gallery = Galleries.query.get(id)
+    db.session.delete(task)
+    db.session.commit()
+    return Response(f" Deleted task with ID : {id}", mimetype='text/plain')
 
