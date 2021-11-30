@@ -2,8 +2,6 @@ from application import app, db
 from application.models import Galleries, Locations
 from flask import render_template, request, redirect, url_for, jsonify, Response
 
-# Location add, read - start with 
-# CRUD for galleries
 
  
 @app.route('/create/location', methods=['POST'])
@@ -28,6 +26,31 @@ def read_tasks():
             }
         )
     return jsonify(locations_dict)
+
+@app.route('/create/gallery', methods=['POST'])
+def create_gallery():
+        package = request.json
+        new_gallery = Galleries(gallery_name=package["gallery_name"])
+        db.session.add(new_gallery)
+        db.session.commit()
+        return Response(f"Your galley: {new_gallery.description} has been added", mimetype='text/plain')
+
+
+
+@app.route('/read/allGalleries', methods=['GET'])
+def read_tasks():
+    all_galleries = Galleries.query.all()
+    galleries_dict = {"galleries": []}
+    for gallery in all_galleries:
+        galleries_dict["galleries"].append(
+            {
+                "id" : galleries.id,
+                "gallery_name" : galleries.description,
+                "information" : galleries.informaiton,
+                "fee" : galleries.fee
+            }
+        )
+    return jsonify(galleriess_dict)
 
 
 
