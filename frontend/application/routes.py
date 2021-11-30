@@ -5,7 +5,6 @@ import requests
 
 backend_host = "final_project-backend:5000"
 
-# read locations, create gallery, read gallery, update gallery, delete gallery
 
 @app.route('/')
 @app.route('/home')
@@ -30,28 +29,42 @@ def create_location():
 
     return render_template("create_location.html", title="Select location", form=form)
 
-#change to galleries
+
+
+@app.route('/create/gallery', methods=['GET','POST'])
+def create_gallery():
+    form = GalleryForm()
+
+    if request.method == "POST":
+        response = requests.post(
+            f"http://{backend_host}/create/gallery",
+            json = {"gallery" : form.gallery.data}
+        )
+        app.logger.info(f"Response: {response.text}")
+        return redirect(url_for('home'))
+
+    return render_template("create_gallery.html", title="Select location", form=form)
 
 @app.route('/update/gallery/<int:id>', methods=['GET','POST'])
 def update_gallery(id):
     form = GalleryForm()
-    gallery = requests.get(f"http://{backend_host}/read/task{id}").json()
-    app.logger.info(f"Location : {location}")
+    gallery = requests.get(f"http://{backend_host}/read/gallery{id}").json()
+    app.logger.info(f"Gallery : {gallery}")
 
     if request.method == "POST":
         response = requests.put(
             f"http://{backend_host}/update/task/{id}",
-            json = {"location" : form.description.data}
+            json = {"Gallery" : form.gallery_name.data}
         )
         return redirect(url_for('home'))
 
-    return render_template('update_location.html', task=task, form=form)
+    return render_template('update_gallery.html', task=task, form=form)
 
 
 
-@app.route('/delete/location/<int:id>')
+@app.route('/delete/gallery/<int:id>')
 def delete_task(id):
-    response = requests.delete(f"http://{backend_host}/delete/task/{id}")
+    response = requests.delete(f"http://{backend_host}/delete/gallery/{id}")
     app.logger.info(f"Response: {response.text}")
     return redirect(url_for('home'))
 
