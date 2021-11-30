@@ -3,23 +3,23 @@ from application.forms import TaskForm
 from flask import render_template, request, redirect, url_for, jsonify
 import requests
 
-backend_host = "todo-app_backend:5000"
+backend_host = "final_project_backend:5000"
 
 @app.route('/')
 @app.route('/home')
 def home():
-    all_tasks = requests.get(f"http://{backend_host}/create/location").json()
-    app.logger.info(f"Tasks: {all_tasks}")
-    return render_template('index.html', title="Home", all_tasks=all_tasks["tasks"])
+    all_locations = requests.get(f"http://{backend_host}/create/location").json()
+    app.logger.info(f"Tasks: {all_locations}")
+    return render_template('index.html', title="Home", all_locations=all_locations["locations"])
 
-@app.route('/create/task', methods=['GET','POST'])
+@app.route('/create/create', methods=['GET','POST'])
 def create_task():
     form = TaskForm()
 
     if request.method == "POST":
         response = requests.post(
-            f"http://{backend_host}/create/task",
-            json = {"description" : form.description.data}
+            f"http://{backend_host}/create/location",
+            json = {"location" : form.location.data}
         )
         app.logger.info(f"Response: {response.text}")
         return redirect(url_for('home'))
