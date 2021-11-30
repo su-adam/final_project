@@ -3,7 +3,7 @@ from wtforms import StringField, SubmitField, SelectField
 from wtforms.validators import DataRequired
 
 class LocationForm(FlaskForm):
-    location = SelectField("Location in London", choices[])
+    location = SelectField("Location in London", choices=[])
     submit = SubmitField("Submit location")
 
 
@@ -13,7 +13,7 @@ class Createlocation(FlaskForm):
     country
 
 class Creategallery(Flaskform):
-    location = SelectField("Location in London", choices[])
+    location = SelectField("Location in London", choices=[])
     submit = SubmitField("Submit location")
     # selectfield for location
 
