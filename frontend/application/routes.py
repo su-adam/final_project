@@ -12,8 +12,8 @@ def home():
     app.logger.info(f"Tasks: {all_locations}")
     return render_template('index.html', title="Home", all_locations=all_locations["locations"])
 
-@app.route('/create/create', methods=['GET','POST'])
-def create_task():
+@app.route('/create/locations', methods=['GET','POST'])
+def create_location():
     form = TaskForm()
 
     if request.method == "POST":
@@ -24,7 +24,7 @@ def create_task():
         app.logger.info(f"Response: {response.text}")
         return redirect(url_for('home'))
 
-    return render_template("create_task.html", title="Add a new Task", form=form)
+    return render_template("create_location.html", title="Select location from London", form=form)
 
 
 
