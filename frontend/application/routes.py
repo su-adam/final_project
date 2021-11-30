@@ -5,6 +5,8 @@ import requests
 
 backend_host = "final_project-backend:5000"
 
+# view galleries and location for homepage
+
 @app.route('/')
 @app.route('/home')
 def home():
@@ -12,6 +14,7 @@ def home():
     app.logger.info(f"Tasks: {all_locations}")
     return render_template('index.html', title="Home", all_locations=all_locations["locations"])
 
+#create location /'update location'/
 @app.route('/create/locations', methods=['GET','POST'])
 def create_location():
     form = TaskForm()
@@ -26,7 +29,7 @@ def create_location():
 
     return render_template("create_location.html", title="Select location from London", form=form)
 
-
+#create galleries /update galleries / delete galleries
 
 @app.route('/update/task/<int:id>', methods=['GET','POST'])
 def update_task(id):
@@ -43,20 +46,13 @@ def update_task(id):
 
     return render_template('update_task.html', task=task, form=form)
 
+# update location
+
+# dele
+
 @app.route('/delete/task/<int:id>')
 def delete_task(id):
     response = requests.delete(f"http://{backend_host}/delete/task/{id}")
     app.logger.info(f"Response: {response.text}")
     return redirect(url_for('home'))
 
-@app.route('/complete/task/<int:id>')
-def complete_task(id):
-    response = requests.put(f"http://{backend_host}/complete /task/{id}")
-    app.logger.info(f"Response: {response.text}")
-    return redirect(url_for('home'))
-
-@app.route('/incomplete/task/<int:id>')
-def incomplete_task(id):
-    response = requests.put(f"http://{backend_host}/incomplete/task/{id}")
-    app.logger.info(f"Response: {response.text}")
-    return redirect(url_for('home'))

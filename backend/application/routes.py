@@ -2,7 +2,8 @@ from application import app, db
 from application.models import Galleries, Locations
 from flask import render_template, request, redirect, url_for, jsonify, Response
 
-
+# CRUD for galleries
+# Location add, read - start with 
  
 @app.route('/create/location', methods=['POST'])
 def create_locaton():
