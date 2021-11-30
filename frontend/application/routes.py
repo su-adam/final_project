@@ -3,7 +3,7 @@ from application.forms import LocationForm
 from flask import render_template, request, redirect, url_for, jsonify
 import requests
 
-backend_host = "final_project-backend:5000"
+backend_host = "final-project-backend:5000"
 
 # view galleries and location for homepage
 
