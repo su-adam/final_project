@@ -4,8 +4,8 @@ services:
     deploy:
       replicas: 3
     build: ./frontend
-    image: ${DOCKER_HUB_CREDS_USR}/todo-app-frontend:latest
-    container_name: todo-app-frontend
+    image: ${DOCKER_HUB_CREDS_USR}/final_project-frontend:latest
+    container_name: final_project-frontend
     ports:
     - target: 5000
       published: 80
@@ -13,8 +13,8 @@ services:
     deploy:
       replicas: 3
     build: ./backend
-    image: ${DOCKER_HUB_CREDS_USR}/todo-app-backend:latest
-    container_name: todo-app-backend
+    image: ${DOCKER_HUB_CREDS_USR}/final_project-backend:latest
+    container_name: final_project-backend
     environment:
       DATABASE_URI:
       CREATE_SCHEMA:
