@@ -7,10 +7,10 @@ class LocationForm(FlaskForm):
     submit = SubmitField("Submit location")
 
 
-class Createlocation(FlaskForm):
-    name 
-    submit 
-    country
+# class Createlocation(FlaskForm):
+#     name 
+#     submit 
+#     country
 
 class Creategallery(Flaskform):
     location = SelectField("Location in London", choices=[])
