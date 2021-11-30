@@ -2,8 +2,8 @@ from application import db
 
 class Locations(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    location= db.Column(db.String(30), nullable=False)
-    
+    description= db.Column(db.String(30), nullable=False)
+
 class Galleries(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     gallery_name = db.Column(db.String(30), nullable=False)

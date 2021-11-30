@@ -2,41 +2,35 @@ from application import app, db
 from application.models import Galleries, Locations
 from flask import render_template, request, redirect, url_for, jsonify, Response
 
-# CRUD for galleries
 # Location add, read - start with 
+# CRUD for galleries
+
  
 @app.route('/create/location', methods=['POST'])
-def create_locaton():
+def create_location():
         package = request.json
-        new_location = Locations(location=package["location"])
-        db.session.add(new_location)
+        new_location = Locations(description=package["description"])
+        db.session.add(new_task)
         db.session.commit()
-        return Response(f"New area: {new_location.area}", mimetype='text/plain')
+        return Response(f"Your location: {new_task.description} has been added", mimetype='text/plain')
 
 
 
-@app.route('/read/locations', methods=['GET'])
-def read_locations():
+@app.route('/read/allLocations', methods=['GET'])
+def read_tasks():
     all_locations = Locations.query.all()
     locations_dict = {"locations": []}
-    for location in all_locationss:
+    for location in all_locations:
         locations_dict["locations"].append(
             {
                 "id" : location.id,
-                "description": location.location
+                "description": task.description,
             }
         )
-    return jsonify(tasks_dict)
-
-
-@app.route('/read/location/<int:id>', methods=['GET'])
-def read_location(id):
-    locations = Locations.query.get(id)
-    locations_dict = {
-                "id" : location.id,
-                "description": location.location
-            }
     return jsonify(locations_dict)
+
+
+
 
 # @app.route('/update/location/<int:id>', methods=['PUT'])
 # def update_task(id):
