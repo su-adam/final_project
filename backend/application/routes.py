@@ -67,8 +67,10 @@ def update_galleries(id):
     package = request.json
     gallery = Galleries.query.get(id)
     gallery.gallery_name = package["gallery_name"]
+    gallery.information = package["information"]
+    gallery.fee = package["fee"]
     db.session.commit()
-    return Response(f" Updated task (ID : {id}) with {gallery.gallery_name}", mimetype='text/plain')
+    return Response(f" Updated task (ID : {id}) with {gallery.gallery_name} now updated", mimetype='text/plain')
 
     
 
@@ -77,5 +79,5 @@ def delete_gallery(id):
     gallery = Galleries.query.get(id)
     db.session.delete(gallery)
     db.session.commit()
-    return Response(f" Deleted task with ID : {id}", mimetype='text/plain')
+    return Response(f" Deleted gallery with ID : {id}", mimetype='text/plain')
 

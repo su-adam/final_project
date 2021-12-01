@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<form method="POST">
+    <table>
+        <tr>
+            <td>{{ form.gallery_name.label }}</td>
+            <td>{{ form.gallery_name }}</td>
+        </tr>
+        <tr>
+            <td>{{ form.information.label }}</td>
+            <td>{{ form.information }}</td>
+        </tr>
+        <tr>
+            <td>{{ form.fee.label }}</td>
+            <td>{{ form.fee }}</td>
+        </tr>
+    </table>
+    {{ form.submit }}
+    {{ form.hidden_tag() }}
+</form>
+
+{% endblock body %}
