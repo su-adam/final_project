@@ -38,6 +38,10 @@ def create_location():
 def create_gallery():
     form = CreategalleryForm()
 
+    json = requests.get(f"http://{backend}/get/allLocations").json()
+    for location in json["locations"]:
+        form.location.choices.append((location["id"], location["country"]))
+
     if request.method == "POST":
         response = requests.post(
             f"http://{backend_host}/create/gallery",
