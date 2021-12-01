@@ -36,7 +36,7 @@ def create_gallery():
         new_gallery = Galleries(
             gallery_name = package["gallery_name"],
             information = package["information"],
-            fee = package["fee"]
+            fee = package["fee"],
             location_id = location_id
             )
         db.session.add(new_gallery)
