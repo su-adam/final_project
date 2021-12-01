@@ -65,7 +65,7 @@ def update_gallery(id):
 
     if request.method == "POST":
         response = requests.put(
-            f"http://{backend_host}/update/task/{id}",
+            f"http://{backend_host}/update/gallery/{id}",
             json = {
                     "name" : form.name.data,
                     "information" : form.information.data,
