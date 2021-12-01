@@ -7,12 +7,27 @@
             <td><b>Country</b></td>
             <td>{{ location["country"] }}</td> 
         </tr>
-        <h3>{{ location["City"] }}</h2>
+        <h3>{{ location["city"] }}</h2>
         <tr>
             <td><b>City</b></td>
             <td>{{ location["city"] }}</td> 
         </tr>
-        
+    </table>
+
+    <h3>Galleries of {{ location["country"] }}</h3>
+    <table>
+        <tr>
+            <th>Country</th>
+            <th>City</th>
+        </tr>
+        {% for gallery in location["galleries"] %}
+        <tr>
+            <td>{{ gallery["country"] }}</td> 
+            <td>{{ gallery["city"] }}</td> 
+        </tr>
+        {% endfor %}
+    </table>
+
 
     {% endfor %}
 {% endblock body %}
