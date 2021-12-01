@@ -44,7 +44,7 @@ def create_gallery():
             json = {
                 "name" : form.name.data,
                 "information" : form.information.data,
-                "fee" : form.fee.fata
+                "fee" : form.fee.data
                 
             }
         )
