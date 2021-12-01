@@ -13,20 +13,6 @@
             <td>{{ location["city"] }}</td> 
         </tr>
         
-    </table>
-    <h3>Galleries of {{ location["country"] }}</h3>
-    <table>
-        <tr>
-            <th>Country</th>
-            <th>City</th>
-        </tr>
-        {% for gallery in country["galleries"] %}
-        <tr>
-            <td>{{ moon["name"] }}</td> 
-            <td>{{ moon["mass"] }}</td> 
-        </tr>
-        {% endfor %}
-    </table>
 
     {% endfor %}
 {% endblock body %}
