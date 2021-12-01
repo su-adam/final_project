@@ -8,7 +8,7 @@ def create_location():
         package = request.json
         new_location = Locations(
             country = package["country"],
-            galleries_id = galleries_id
+            galleries_id = galleries_id,
             city = package["city"]
         )
         db.session.add(new_location)
