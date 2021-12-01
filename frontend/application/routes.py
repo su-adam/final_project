@@ -57,20 +57,25 @@ def create_gallery():
 
     return render_template("create_gallery.html", title="Select location", form=form)
 
-# @app.route('/update/gallery/<int:id>', methods=['GET','POST'])
-# def update_gallery(id):
-#     form = CreategalleryForm()
-#     gallery = requests.get(f"http://{backend_host}/read/gallery{id}").json()
-#     app.logger.info(f"Gallery : {gallery}")
+@app.route('/update/gallery/<int:id>', methods=['GET','POST'])
+def update_gallery(id):
+    form = CreategalleryForm()
+    gallery = requests.get(f"http://{backend_host}/read/gallery{id}").json()
+    app.logger.info(f"Gallery : {gallery}")
 
-#     if request.method == "POST":
-#         response = requests.put(
-#             f"http://{backend_host}/update/task/{id}",
-#             json = {"Gallery" : form.gallery_name.data}
-#         )
-#         return redirect(url_for('home'))
+    if request.method == "POST":
+        response = requests.put(
+            f"http://{backend_host}/update/task/{id}",
+            json = {
+                    "name" : form.name.data,
+                    "information" : form.information.data,
+                    "fee" : form.fee.data
+                    
+                }
+        )
+        return redirect(url_for('home'))
 
-#     return render_template('update_gallery.html', task=task, form=form)
+    return render_template('update.html', task=task, form=form)
 
 
 
