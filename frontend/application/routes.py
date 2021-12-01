@@ -9,9 +9,9 @@ backend_host = "final_project_backend:5000"
 @app.route('/')
 @app.route('/home')
 def home():
-    locations = requests.get(f"http://{backend_host}/read/allLocations").json()
+    locations = requests.get(f"http://{backend_host}/read/allLocations").json()["locations"]
     app.logger.info(f"Locations: {locations}")
-    return render_template('index.html', title="Home", locations=locations["locations"])
+    return render_template('index.html', title="Home", locations=locations)
 
 
 @app.route('/create/location', methods=['GET','POST'])
