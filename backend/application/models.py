@@ -2,7 +2,8 @@ from application import db
 
 class Locations(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    description= db.Column(db.String(30), nullable=False)
+    country= db.Column(db.String(30), nullable=False)
+    city= db.Column(db.String(30), nullable=False)
     galleries = db.relationship('Galleries', backref='location')
 
 class Galleries(db.Model):

@@ -6,10 +6,14 @@ from flask import render_template, request, redirect, url_for, jsonify, Response
 @app.route('/create/location', methods=['POST'])
 def create_location():
         package = request.json
-        new_location = Locations(description=package["description"])
+        new_location = Locations(
+            country = package["country"],
+            galleries_id = galleries_id
+            city = package["city"]
+        )
         db.session.add(new_location)
         db.session.commit()
-        return Response(f"Your location: {new_location.description} has been added", mimetype='text/plain')
+        return Response(f"Your location: {new_location.country} has been added", mimetype='text/plain')
 
 
 
@@ -21,7 +25,8 @@ def read_allLocations():
         locations_dict["locations"].append(
             {
                 "id" : location.id,
-                "description": location.description,
+                "country": location.country,
+                "city" : location.city
             }
         )
     return jsonify(locations_dict)
@@ -29,7 +34,10 @@ def read_allLocations():
 @app.route('/create/gallery', methods=['POST'])
 def create_gallery():
         package = request.json
-        new_gallery = Galleries(gallery_name=package["gallery_name"])
+        new_gallery = Galleries(
+            gallery_name=package["gallery_name"]
+
+            )
         db.session.add(new_gallery)
         db.session.commit()
         return Response(f"Your galley: {new_gallery.description} has been added", mimetype='text/plain')

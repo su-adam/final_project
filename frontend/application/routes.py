@@ -1,5 +1,5 @@
 from application import app
-from application.forms import LocationForm
+from application.forms import CreatelocationForm, CreategalleryForm
 from flask import render_template, request, redirect, url_for, jsonify
 import requests
 
@@ -16,7 +16,7 @@ def home():
 
 @app.route('/create/location', methods=['GET','POST'])
 def create_location():
-    form = LocationForm()
+    form = CreatelocationForm()
 
     if request.method == "POST":
         response = requests.post(
@@ -32,7 +32,7 @@ def create_location():
 
 @app.route('/create/gallery', methods=['GET','POST'])
 def create_gallery():
-    form = GalleryForm()
+    form = CreategalleryForm()
 
     if request.method == "POST":
         response = requests.post(
@@ -44,25 +44,25 @@ def create_gallery():
 
     return render_template("create_gallery.html", title="Select location", form=form)
 
-@app.route('/update/gallery/<int:id>', methods=['GET','POST'])
-def update_gallery(id):
-    form = GalleryForm()
-    gallery = requests.get(f"http://{backend_host}/read/gallery{id}").json()
-    app.logger.info(f"Gallery : {gallery}")
+# @app.route('/update/gallery/<int:id>', methods=['GET','POST'])
+# def update_gallery(id):
+#     form = CreategalleryForm()
+#     gallery = requests.get(f"http://{backend_host}/read/gallery{id}").json()
+#     app.logger.info(f"Gallery : {gallery}")
 
-    if request.method == "POST":
-        response = requests.put(
-            f"http://{backend_host}/update/task/{id}",
-            json = {"Gallery" : form.gallery_name.data}
-        )
-        return redirect(url_for('home'))
+#     if request.method == "POST":
+#         response = requests.put(
+#             f"http://{backend_host}/update/task/{id}",
+#             json = {"Gallery" : form.gallery_name.data}
+#         )
+#         return redirect(url_for('home'))
 
-    return render_template('update_gallery.html', task=task, form=form)
+#     return render_template('update_gallery.html', task=task, form=form)
 
 
 
 @app.route('/delete/gallery/<int:id>')
-def delete_task(id):
+def delete_gallery(id):
     response = requests.delete(f"http://{backend_host}/delete/gallery/{id}")
     app.logger.info(f"Response: {response.text}")
     return redirect(url_for('home'))
