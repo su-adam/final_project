@@ -3,6 +3,7 @@ from application import db
 class Locations(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     description= db.Column(db.String(30), nullable=False)
+    galleries = db.relationship('Galleries', 'locationbr')
 
 class Galleries(db.Model):
     id = db.Column(db.Integer, primary_key=True)
