@@ -10,7 +10,7 @@ backend_host = "final_project_backend:5000"
 @app.route('/home')
 def home():
     locations = requests.get(f"http://{backend_host}/read/allLocations").json()
-    app.logger.info(f"Locations: {all_locations}")
+    app.logger.info(f"Locations: {locations}")
     return render_template('index.html', title="Home", locations=locations["locations"])
 
 
