@@ -3,7 +3,7 @@ from application.forms import CreatelocationForm, CreategalleryForm
 from flask import render_template, request, redirect, url_for, jsonify
 import requests
 
-backend_host = "final_project-backend:5000"
+backend_host = "final_project_backend:5000"
 
 
 @app.route('/')
