@@ -70,9 +70,9 @@ def create_gallery():
 
 
 
-# @app.route('/delete/gallery/<int:id>')
-# def delete_gallery(id):
-#     response = requests.delete(f"http://{backend_host}/delete/gallery/{id}")
-#     app.logger.info(f"Response: {response.text}")
-#     return redirect(url_for('home'))
+@app.route('/delete/gallery/<int:id>')
+def delete_gallery(id):
+    response = requests.delete(f"http://{backend_host}/delete/gallery/{id}")
+    app.logger.info(f"Response: {response.text}")
+    return redirect(url_for('home'))
 
