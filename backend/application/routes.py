@@ -7,9 +7,9 @@ from flask import render_template, request, redirect, url_for, jsonify, Response
 def create_location():
         package = request.json
         new_location = Locations(description=package["description"])
-        db.session.add(new_task)
+        db.session.add(new_location)
         db.session.commit()
-        return Response(f"Your location: {new_task.description} has been added", mimetype='text/plain')
+        return Response(f"Your location: {new_location.description} has been added", mimetype='text/plain')
 
 
 
@@ -37,7 +37,7 @@ def create_gallery():
 
 
 @app.route('/read/allGalleries', methods=['GET'])
-def read_tasks():
+def read_allgalleries():
     all_galleries = Galleries.query.all()
     galleries_dict = {"galleries": []}
     for gallery in all_galleries:
