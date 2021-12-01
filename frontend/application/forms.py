@@ -4,8 +4,8 @@ from wtforms.validators import DataRequired
 
 class CreatelocationForm(FlaskForm):
     location = SelectField("Location in London", choices=[])
-    Country = StringField("Which country is this gallery located in?", validators=[DataRequired()])
-    City = StringField("Which city is this gallery located in?", validators=[DataRequired()])
+    country = StringField("Which country is this gallery located in?", validators=[DataRequired()])
+    city = StringField("Which city is this gallery located in?", validators=[DataRequired()])
     submit = SubmitField("Submit location!")
 
 
