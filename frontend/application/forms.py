@@ -11,7 +11,7 @@ class CreatelocationForm(FlaskForm):
 
 
 class CreategalleryForm(FlaskForm):
-    Name = StringField("Name of gallery:", validators=[DataRequired()])
-    Information = StringField("Genre of gallery:", validators=[DataRequired()])
-    Fee = StringField("Is there a fee for this gallery?", validators=[DataRequired()])
+    name = StringField("Name of gallery:", validators=[DataRequired()])
+    information = StringField("Genre of gallery:", validators=[DataRequired()])
+    fee = StringField("Is there a fee for this gallery?", validators=[DataRequired()])
     submit = SubmitField("Submit gallery!")

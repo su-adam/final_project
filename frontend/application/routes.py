@@ -21,7 +21,11 @@ def create_location():
     if request.method == "POST":
         response = requests.post(
             f"http://{backend_host}/create/location",
-            json = {"location" : form.location.data}
+            json = {
+                "country" : form.country.data,
+                "city" : form.city.data
+                
+            }
         )
         app.logger.info(f"Response: {response.text}")
         return redirect(url_for('home'))
@@ -37,7 +41,12 @@ def create_gallery():
     if request.method == "POST":
         response = requests.post(
             f"http://{backend_host}/create/gallery",
-            json = {"gallery" : form.gallery.data}
+            json = {
+                "name" : form.name.data,
+                "information" : form.information.data,
+                "fee" : form.fee.fata
+                
+            }
         )
         app.logger.info(f"Response: {response.text}")
         return redirect(url_for('home'))
