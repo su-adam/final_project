@@ -57,7 +57,7 @@ def read_allgalleries():
 def update_galleries(id):
     package = request.json
     gallery = Galleries.query.get(id)
-    gallery.gallery_name = package["description"]
+    gallery.gallery_name = package["gallery_name"]
     db.session.commit()
     return Response(f" Updated task (ID : {id}) with {gallery.gallery_name}", mimetype='text/plain')
 
@@ -66,7 +66,7 @@ def update_galleries(id):
 @app.route('/delete/gallery/<int:id>', methods=['DELETE'])
 def delete_gallery(id):
     gallery = Galleries.query.get(id)
-    db.session.delete(task)
+    db.session.delete(gallery)
     db.session.commit()
     return Response(f" Deleted task with ID : {id}", mimetype='text/plain')
 
