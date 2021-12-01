@@ -34,8 +34,8 @@ def read_allLocations():
 def create_gallery():
         package = request.json
         new_gallery = Galleries(
-            gallery_name = package["gallery_name"]
-            information = package["information"]
+            gallery_name = package["gallery_name"],
+            information = package["information"],
             fee = package["fee"]
 
             )
