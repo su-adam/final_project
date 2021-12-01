@@ -21,7 +21,7 @@ def read_tasks():
         locations_dict["locations"].append(
             {
                 "id" : location.id,
-                "description": task.description,
+                "description": location.description,
             }
         )
     return jsonify(locations_dict)
@@ -49,7 +49,7 @@ def read_allgalleries():
                 "fee" : galleries.fee
             }
         )
-    return jsonify(galleriess_dict)
+    return jsonify(galleries_dict)
 
 
 

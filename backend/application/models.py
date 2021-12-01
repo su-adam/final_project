@@ -9,7 +9,7 @@ class Galleries(db.Model):
     gallery_name = db.Column(db.String(30), nullable=False)
     informaiton = db.Column(db.String(30), nullable=False)
     fee = db.Column(db.String(30), nullable=False)
-    location_id = db.Column(db.Integer, db.ForeignKey('location.id'), nullable=False)
+    location_id = db.Column(db.Integer, db.ForeignKey('locations.id'), nullable=False)
 
 
     
