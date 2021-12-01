@@ -14,7 +14,7 @@ def create_location():
 
 
 @app.route('/read/allLocations', methods=['GET'])
-def read_tasks():
+def read_allLocations():
     all_locations = Locations.query.all()
     locations_dict = {"locations": []}
     for location in all_locations:
