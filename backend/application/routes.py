@@ -54,7 +54,7 @@ def read_allgalleries():
             {
                 "id" : galleries.id,
                 "gallery_name" : galleries.description,
-                "information" : galleries.informaiton,
+                "information" : galleries.information,
                 "fee" : galleries.fee
             }
         )
