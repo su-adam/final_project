@@ -34,12 +34,14 @@ def read_allLocations():
 def create_gallery():
         package = request.json
         new_gallery = Galleries(
-            gallery_name=package["gallery_name"]
+            gallery_name = package["gallery_name"]
+            informaiton = package["information"]
+            fee = package["fee"]
 
             )
         db.session.add(new_gallery)
         db.session.commit()
-        return Response(f"Your galley: {new_gallery.description} has been added", mimetype='text/plain')
+        return Response(f"Your galley: {new_gallery.gallery_name} has been added", mimetype='text/plain')
 
 
 
