@@ -12,7 +12,7 @@ def create_location():
         )
         db.session.add(new_location)
         db.session.commit()
-        return Response(f"Your location: {new_location.country} has been added", mimetype='text/plain')
+        return Response(f"Your location: {new_location.country_name} has been added", mimetype='text/plain')
 
 
 
