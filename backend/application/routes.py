@@ -29,14 +29,7 @@ def read_allLocations():
                 "city" : location.city
             }
         )
-    json["galleries"].append(
-            {
-                    "gallery_name": gallery.gallery_name,
-                    "information" : gallery.information,
-                    "fee" : gallery.fee,
-                    "location_id" : location.gallery_id
-            }
-        )
+    
     return jsonify(locations_dict)
 
 @app.route('/create/gallery', methods=['POST'])
