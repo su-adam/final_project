@@ -21,11 +21,11 @@
             <th>Country</th>
             <th>City</th>
         </tr>
-        {% for gallery in locations["galleries"] %}
+        {% for gallery in location["galleries"] %}
         <tr>
-            <td>{{ galleries["gallery_name"] }}</td> 
-            <td>{{ galleries["information"] }}</td> 
-            <td>{{ galleries["fee"] }}</td> 
+            <td>{{ location["gallery_name"] }}</td> 
+            <td>{{ location["information"] }}</td> 
+            <td>{{ location["fee"] }}</td> 
         </tr>
         {% endfor %}
     </table>
@@ -33,3 +33,5 @@
 
     {% endfor %}
 {% endblock body %}
+
+
