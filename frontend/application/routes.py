@@ -40,7 +40,7 @@ def create_gallery():
 
     json = requests.get(f"http://{backend_host}/read/allLocations").json()
     for location in json["locations"]:
-        form.country.choices.append(( gallery["id"] , gallery["name"], gallery["information"], gallery["fee"]))
+        form.country.choices.append(( location["country"] , location["city"]))
 
     if request.method == "POST":
         response = requests.post(

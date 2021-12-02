@@ -26,8 +26,8 @@
             <td>{{ gallery["gallery_name"] }}</td> 
             <td>{{ gallery["information"] }}</td> 
             <td>{{ gallery["fee"] }}</td> 
-            <a href="{{ url_for('update_gallery', id=gallery.id) }}">Edit</a>
-            <a href="{{ url_for('delete_gallery', id=gallery.id) }}">Delete</a>       
+            <button type="button" onclick="window.location.href='{{ url_for('update_gallery', id=gallery.id) }}';">Edit</button>
+            <button type="button" onclick="window.location.href='{{ url_for('delete_gallery', id=gallery.id) }}';">Delete</button>       
         </tr>
         {% endfor %}
     </table>
