@@ -46,9 +46,10 @@ def create_gallery():
         response = requests.post(
             f"http://{backend_host}/create/gallery",
             json = {
-                "name" : form.name.data,
+                "name" : form.galler_name.data,
                 "information" : form.information.data,
                 "fee" : form.fee.data
+                "locations" : form.locations.data
                 
             }
         )
