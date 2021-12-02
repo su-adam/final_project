@@ -25,7 +25,7 @@ def read_allLocations():
             {
                 "id" : location.id,
                 "country": location.country,
-                "city" : location.city
+                "city" : location.city,
                 "galleries" : galleries
             }
         )
