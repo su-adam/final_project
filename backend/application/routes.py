@@ -36,7 +36,7 @@ def read_allLocations():
         locations_dict["locations"].append(
             {
                 "id" : location.id,
-                "country": location.country,
+                "country": location.country_name,
                 "city" : location.city,
                 "galleries" : galleries
             }
