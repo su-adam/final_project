@@ -30,7 +30,7 @@ def read_allLocations():
                     "gallery_name": gallery.gallery_name,
                     "information" : gallery.information,
                     "fee" : gallery.fee,
-                    "country_id" : location.country_id
+                    "country_id" : location.country_name
                 }
             )
         locations_dict["locations"].append(
