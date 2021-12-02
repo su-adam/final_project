@@ -17,28 +17,14 @@ def create_location():
 
 
 @app.route('/read/allLocations', methods=['GET'])
-def read_allLocations():
+def read_tasks():
     all_locations = Locations.query.all()
     locations_dict = {"locations": []}
-
     for location in all_locations:
-        galleries=[]
-        for gallery in location.galleries: 
-            galleries.append(
-                {
-                    "id" : gallery.id,
-                    "gallery_name": gallery.gallery_name,
-                    "information" : gallery.information,
-                    "fee" : gallery.fee,
-                    "location_id" : location.gallery_id
-                }
-            )
-    json["locations"].append(
+        locations_dict["locations"].append(
             {
-                "id": location.id,
-                "country": location.country,
-                "city": location.city,
-                "galleries": galleries
+                "id" : location.id,
+                "description": task.description,
             }
         )
     return jsonify(locations_dict)
