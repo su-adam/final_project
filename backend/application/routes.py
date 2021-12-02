@@ -16,19 +16,21 @@ def create_location():
 
 
 
+
 @app.route('/read/allLocations', methods=['GET'])
-def read_tasks():
+def read_allLocations():
     all_locations = Locations.query.all()
     locations_dict = {"locations": []}
     for location in all_locations:
         locations_dict["locations"].append(
             {
                 "id" : location.id,
-                "description": task.description,
+                "country": location.country,
+                "city" : location.city
             }
         )
     return jsonify(locations_dict)
-
+    
 @app.route('/create/gallery', methods=['POST'])
 def create_gallery():
         package = request.json
