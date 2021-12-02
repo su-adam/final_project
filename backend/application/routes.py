@@ -26,9 +26,9 @@ def read_allLocations():
         for gallery in location.galleries: 
             galleries.append(
                 {
-                    "id" : locations.id,
-                    "country": locations.country,
-                    "city" : locations.city,
+                    "id" : location.id,
+                    "country": location.country,
+                    "city" : location.city,
                     "galleries" : galleries
                 }
             )
