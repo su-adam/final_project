@@ -27,10 +27,11 @@ def read_allLocations():
             galleries.append(
                 {
                     "id" : gallery.id,
-                    "gallery_name": gallery.country,
-                    "informatio" : gallery.city,
-                    "fee" : galleries
+                    "gallery_name": gallery.gallery_name,
+                    "information" : gallery.information,
+                    "fee" : gallery.fee,
                     "location_id" : location.gallery_id
+                    "galleries" : galleries
                 }
             )
     json["locations"].append(
