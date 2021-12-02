@@ -21,14 +21,16 @@ def read_allLocations():
     all_locations = Locations.query.all()
     locations_dict = {"locations": []}
     for location in all_locations:
-        locations_dict["locations"].append(
-            {
-                "id" : location.id,
-                "country": location.country,
-                "city" : location.city,
-                "galleries" : galleries
-            }
-        )
+        galleries=[]
+        for gallery in location.galleries: 
+            galleries.append(
+                {
+                    "id" : location.id,
+                    "country": location.country,
+                    "city" : location.city,
+                    "galleries" : galleries
+                }
+            )
     return jsonify(locations_dict)
 
 @app.route('/create/gallery', methods=['POST'])
