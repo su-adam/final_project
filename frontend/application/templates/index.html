@@ -10,20 +10,15 @@
         City<br>
         {{ location["city"] }}<br> 
     </p>
+    {% endfor %}
 
-
-    <h3>Galleries of {{ location["country"], location["city"] }}</h3>
-    <table>
+    <h4>Galleries of {{  location["city"] }}</h4>
         {% for gallery in location["galleries"] %}
-        <tr>
-            <td>{{ gallery["gallery_name"] }}</td> 
-            <td>{{ gallery["information"] }}</td> 
-            <td>{{ gallery["fee"] }}</td> 
-        </tr>
-        {% endfor %}
-    </table>
-   
-
+        <p>
+            {{ gallery["gallery_name"] }}<br>
+            {{ gallery["information"] }}<br> 
+            {{ gallery["fee"] }}<br> 
+        </p>
     {% endfor %}
 {% endblock body %}
 
