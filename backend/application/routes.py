@@ -31,14 +31,13 @@ def read_allLocations():
                     "information" : gallery.information,
                     "fee" : gallery.fee,
                     "location_id" : location.gallery_id
-                    "galleries" : galleries
                 }
             )
     json["locations"].append(
             {
                 "id": location.id,
                 "country": location.country,
-                "city": location.city
+                "city": location.city,
                 "galleries": galleries
             }
         )
