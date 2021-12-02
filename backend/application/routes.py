@@ -22,7 +22,7 @@ def read_allLocations():
     locations_dict = {"locations": []}
     for location in all_locations:
         galleries=[]
-        for gallery in locations.galleries: 
+        for gallery in location.galleries: 
             galleries.append(
                 {
                     "id" : locations.id,
