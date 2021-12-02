@@ -48,8 +48,8 @@ def create_gallery():
             json = {
                 "name" : form.gallery_name.data,
                 "information" : form.information.data,
-                "fee" : form.fee.data
-                
+                "fee" : form.fee.data,
+                "country_id" : form.locations.data
             }
         )
         app.logger.info(f"Response: {response.text}")
