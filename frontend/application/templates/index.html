@@ -12,7 +12,7 @@
     </p>
     {% endfor %}
 
-    <h4>Galleries of {{  location["city"] }}</h4>
+{ #    <h4>Galleries of {{  location["city"] }}</h4>
         {% for gallery in location["galleries"] %}
         <p>
             {{ gallery["gallery_name"] }}<br>
@@ -20,6 +20,6 @@
             {{ gallery["fee"] }}<br> 
         </p>
     {% endfor %}
-{% endblock body %}
+{% endblock body %} # }
 
 
