@@ -29,12 +29,12 @@ def read_allLocations():
                 "city" : location.city
             }
         )
-    json["locations"].append(
+    json["galleries"].append(
             {
-                "id": location.id,
-                "country": location.country,
-                "city": location.city
-                "galleries": galleries
+                    "gallery_name": gallery.gallery_name,
+                    "information" : gallery.information,
+                    "fee" : gallery.fee,
+                    "location_id" : location.gallery_id
             }
         )
     return jsonify(locations_dict)
