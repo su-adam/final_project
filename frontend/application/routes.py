@@ -39,8 +39,8 @@ def create_gallery():
     form = CreategalleryForm()
 
     json = requests.get(f"http://{backend_host}/read/allLocations").json()
-    for location in json["locations"]:
-        form.country.choices.append((location["id"], location["country"] , gallery["id"] , gallery["name"], gallery["information"], gallery["fee"]))
+    for gallery in json["galleries"]:
+        form.country.choices.append(( gallery["id"] , gallery["name"], gallery["information"], gallery["fee"]))
 
     if request.method == "POST":
         response = requests.post(
