@@ -1,25 +1,19 @@
 {% extends "layout.html" %}
 {% block body %}
+    <h2>{{ location["country"] }}</h2> 
+    <h3>{{ location["city"] }}</h2>
     {% for location in locations %}
-    <table>
-        <h2>{{ location["country"] }}</h2>
-        <tr>
-            <td><b>Country</b></td>
-            <td>{{ location["country"] }}</td> 
-        </tr>
-        <h3>{{ location["city"] }}</h2>
-        <tr>
-            <td><b>City</b></td>
-            <td>{{ location["city"] }}</td> 
-        </tr>
-    </table>
+    <p>
+        Country<br>
+        {{ location["country"] }}<br> 
+
+        City<br>
+        {{ location["city"] }}<br> 
+    </p>
 
 
     <h3>Galleries of {{ location["country"], location["city"] }}</h3>
     <table>
-        <tr>
-            <th>Galleries in your chosen city</th>
-        </tr>
         {% for gallery in location["galleries"] %}
         <tr>
             <td>{{ gallery["gallery_name"] }}</td> 
