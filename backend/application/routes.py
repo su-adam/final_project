@@ -26,6 +26,7 @@ def read_allLocations():
                 "id" : location.id,
                 "country": location.country,
                 "city" : location.city
+                "galleries" : galleries
             }
         )
     return jsonify(locations_dict)
@@ -56,6 +57,7 @@ def read_allgalleries():
                 "gallery_name" : galleries.description,
                 "information" : galleries.information,
                 "fee" : galleries.fee
+                
             }
         )
     return jsonify(galleries_dict)
