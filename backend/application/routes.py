@@ -52,7 +52,7 @@ def create_gallery():
             gallery_name = package["gallery_name"],
             information = package["information"],
             fee = package["fee"],
-            location_id = package["location_id"]
+            country_id = package["country_id"]
             )
         db.session.add(new_gallery)
         db.session.commit()
