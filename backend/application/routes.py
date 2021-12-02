@@ -7,7 +7,7 @@ from flask import render_template, request, redirect, url_for, jsonify, Response
 def create_location():
         package = request.json
         new_location = Locations(
-            country = package["country"],
+            country = package["country_name"],
             city = package["city"]
         )
         db.session.add(new_location)
