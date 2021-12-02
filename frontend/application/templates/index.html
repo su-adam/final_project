@@ -15,12 +15,16 @@
     </table>
 
 
-    <h3>Galleries of {{ location["country"] }}</h3>
+    <h3>Galleries of {{ location["city"] }}</h3>
     <table>
         {% for gallery in location["galleries"] %}
         <tr>
-            <td>{{ gallery["gallery_name"] }}</td> 
+            <td>{{ gallery["gallery_name"] }}</td>
+        </tr>
+        <tr> 
             <td>{{ gallery["information"] }}</td> 
+        </tr>
+        <tr>
             <td>{{ gallery["fee"] }}</td>      
         </tr>
         {% endfor %}
