@@ -20,14 +20,15 @@ def create_location():
 def read_allLocations():
     all_locations = Locations.query.all()
     locations_dict = {"locations": []}
+
     for location in all_locations:
         galleries=[]
         for gallery in location.galleries: 
             galleries.append(
                 {
-                    "id" : location.id,
-                    "country": location.country,
-                    "city" : location.city,
+                    "id" : locations.id,
+                    "country": locations.country,
+                    "city" : locations.city,
                     "galleries" : galleries
                 }
             )
