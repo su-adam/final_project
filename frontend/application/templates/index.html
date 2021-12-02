@@ -1,7 +1,9 @@
 {% extends "layout.html" %}
 {% block body %}
-    <h2>{{ location["country"] }}</h2> 
-    <h3>{{ location["city"] }}</h2>
+
+    <h2>Location of Galleries</h2>
+    {{ location["country"] }}
+    {{ location["city"] }}
     {% for location in locations %}
     <p>
         Country<br>
@@ -12,14 +14,15 @@
     </p>
     {% endfor %}
 
-{ #    <h4>Galleries of {{  location["city"] }}</h4>
-        {% for gallery in location["galleries"] %}
+   
+    Galleries of {{  location["city"] }}<br>
+    {% for gallery in location["galleries"] %}
         <p>
             {{ gallery["gallery_name"] }}<br>
             {{ gallery["information"] }}<br> 
             {{ gallery["fee"] }}<br> 
         </p>
     {% endfor %}
-{% endblock body %} # }
+{% endblock body %} 
 
 
