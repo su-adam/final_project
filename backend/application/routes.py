@@ -22,15 +22,28 @@ def read_allLocations():
     all_locations = Locations.query.all()
     locations_dict = {"locations": []}
     for location in all_locations:
+        galleries=[]
+        for gallery in location.galleries:
+            galleries.append(
+                {
+                    "id" : gallery.id,
+                    "gallery_name": gallery.gallery_name,
+                    "information" : gallery.information,
+                    "fee" : gallery.fee,
+                    "location_id" : location.gallery_id
+                }
+            )
         locations_dict["locations"].append(
             {
                 "id" : location.id,
                 "country": location.country,
-                "city" : location.city
+                "city" : location.city,
+                "galleries" : galleries
             }
         )
     
     return jsonify(locations_dict)
+
 
 @app.route('/create/gallery', methods=['POST'])
 def create_gallery():
@@ -55,7 +68,7 @@ def read_allgalleries():
         galleries_dict["galleries"].append(
             {
                 "id" : gallery.id,
-                "gallery_name" : gallery.description,
+                "gallery_name" : gallery.gallery_name,
                 "information" : gallery.information,
                 "fee" : gallery.fee
                 
