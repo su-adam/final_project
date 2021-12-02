@@ -54,10 +54,10 @@ def read_allgalleries():
     for gallery in all_galleries:
         galleries_dict["galleries"].append(
             {
-                "id" : galleries.id,
-                "gallery_name" : galleries.description,
-                "information" : galleries.information,
-                "fee" : galleries.fee
+                "id" : gallery.id,
+                "gallery_name" : gallery.description,
+                "information" : gallery.information,
+                "fee" : gallery.fee
                 
             }
         )
