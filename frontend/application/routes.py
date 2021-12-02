@@ -49,7 +49,6 @@ def create_gallery():
                 "name" : form.galler_name.data,
                 "information" : form.information.data,
                 "fee" : form.fee.data
-                "locations" : form.locations.data
                 
             }
         )
