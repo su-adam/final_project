@@ -22,12 +22,12 @@ def read_allLocations():
     locations_dict = {"locations": []}
     for location in all_locations:
         galleries=[]
-        for gallery in location.galleries: 
+        for gallery in locations.galleries: 
             galleries.append(
                 {
-                    "id" : location.id,
-                    "country": location.country,
-                    "city" : location.city,
+                    "id" : locations.id,
+                    "country": locations.country,
+                    "city" : locations.city,
                     "galleries" : galleries
                 }
             )
