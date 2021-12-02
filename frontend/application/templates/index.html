@@ -17,10 +17,6 @@
 
     <h3>Galleries of {{ location["country"] }}</h3>
     <table>
-        <tr>
-            <th>Country</th>
-            <th>City</th>
-        </tr>
         {% for gallery in location["galleries"] %}
         <tr>
             <td>{{ gallery["gallery_name"] }}</td> 
