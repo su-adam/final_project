@@ -21,13 +21,11 @@
             <th>Country</th>
             <th>City</th>
         </tr>
-        {% for gallery in location["galleries"] %}
+        {% for gallery in locations["galleries"] %}
         <tr>
             <td>{{ gallery["gallery_name"] }}</td> 
             <td>{{ gallery["information"] }}</td> 
             <td>{{ gallery["fee"] }}</td> 
-            <button type="button" onclick="window.location.href='{{ url_for('update_gallery', id=gallery.id) }}';">Edit</button>
-            <button type="button" onclick="window.location.href='{{ url_for('delete_gallery', id=gallery.id) }}';">Delete</button>       
         </tr>
         {% endfor %}
     </table>

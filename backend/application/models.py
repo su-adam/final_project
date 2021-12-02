@@ -4,7 +4,7 @@ class Locations(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     country= db.Column(db.String(30), nullable=False)
     city = db.Column(db.String(30), nullable=False)
-    galleries = db.relationship('Galleries', backref='location')
+    galleries = db.relationship('Galleries', backref='locations')
 
 class Galleries(db.Model):
     id = db.Column(db.Integer, primary_key=True)
