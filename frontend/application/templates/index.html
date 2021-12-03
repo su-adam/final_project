@@ -2,12 +2,12 @@
 {% block body %}
     {% for location in locations %}
     <table>
-        <h2>{{ location["country"] }}</h2>
+        <h2><small>{{ location["country"] }}</small></h2>
         <tr>
             <td><b>Country</b></td>
             <td>{{ location["country"] }}</td> 
         </tr>
-        <h3>{{ location["city"] }}</h2>
+        <h3><small>{{ location["city"] }}</small></h2>
         <tr>
             <td><b>City</b></td>
             <td>{{ location["city"] }}</td> 
