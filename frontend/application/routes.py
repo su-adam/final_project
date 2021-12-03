@@ -60,7 +60,7 @@ def create_gallery():
 @app.route('/update/gallery/<int:id>', methods=['GET','POST'])
 def update_gallery(id):
     form = CreategalleryForm()
-    gallery = requests.get(f"http://{backend_host}/read/gallery{id}").json()
+    gallery = requests.get(f"http://{backend_host}/read/allGalleries{id}").json()
     app.logger.info(f"Gallery : {gallery}")
 
     if request.method == "POST":
