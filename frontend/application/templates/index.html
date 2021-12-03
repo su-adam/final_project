@@ -29,8 +29,8 @@
         </tr>
         {% endfor %}
     </table>
-    <a href="{{ url_for('update_gallery', id=Galleries.id) }}">Update Gallery</a>
-    <a href="{{ url_for('delete_gallery', id=Galleries.id) }}">Delete Gallery</a>
+    <a href="{{ url_for('update_gallery', id=gallery.id) }}">Update Gallery</a>
+    <a href="{{ url_for('delete_gallery', id=galllery.id) }}">Delete Gallery</a>
 
     {% endfor %}
 {% endblock body %}
