@@ -76,6 +76,17 @@ def read_allgalleries():
         )
     return jsonify(galleries_dict)
 
+@app.route('/read/gallery/<int:id>', methods=['GET'])
+def read_gallery(id):
+    gallery = Galleries.query.get(id)
+    galleries_dict = {
+                "id" : gallery.id,
+                "gallery_name": gallery.gallery_name,
+                "information": gallery.information,
+                "fee" : gallery.fee
+            }
+    return jsonify(galleries_dict)
+
 
 
 @app.route('/update/gallery/<int:id>', methods=['PUT'])
