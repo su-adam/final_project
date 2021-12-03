@@ -79,7 +79,7 @@ def read_allgalleries():
 
 
 @app.route('/update/gallery/<int:id>', methods=['PUT'])
-def update_galleries(id):
+def update_gallery(id):
     package = request.json
     gallery = Galleries.query.get(id)
     gallery.gallery_name = package["gallery_name"]

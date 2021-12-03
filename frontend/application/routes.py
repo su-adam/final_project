@@ -75,7 +75,7 @@ def update_gallery(id):
         )
         return redirect(url_for('home'))
 
-    return render_template('update.html', task=task, form=form)
+    return render_template('update.html', title="Update Gallery", form=form)
 
 
 
