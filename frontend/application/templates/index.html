@@ -29,7 +29,7 @@
         </tr>
         {% endfor %}
     </table>
-   
+    <a href="{{ url_for('update_gallery', id=gallery.id) }}">Update Gallery</a>
 
     {% endfor %}
 {% endblock body %}
