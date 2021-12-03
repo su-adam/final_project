@@ -67,7 +67,7 @@ def update_gallery(id):
         response = requests.put(
             f"http://{backend_host}/update/gallery/{id}",
             json = {
-                    "name" : form.name.data,
+                    "gallery_name" : form.gallery_name.data,
                     "information" : form.information.data,
                     "fee" : form.fee.data
                     
