@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block body %}
+<p>
+    <b>Current gallery information</b> 
+    {{ gallery.gallery_name }}
+    {{ gallery.information }}
+    {{ gallery.fee }}
+</p>
+
+<div class='form'>
+    <form method='POST' action=''>
+        {{ form.hidden_tag() }}
+        {{ form.gallery_name.label }} {{ form.gallery_name }}<br>
+        {{ form.information.label }} {{ form.information }} <br>
+        {{ form.fee.label }} {{ form.fee }} <br>
+        {{ form.submit }}<br>
+    </form>
+</div>
+{% endblock %}

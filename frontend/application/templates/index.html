@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block body %}
+    {% for location in locations %}
+
+    
+    <table>
+        <tr>
+            <td><b>Country</b></td>
+            <td>{{ location["country"] }}</td> 
+        </tr>
+        <tr>
+            <td><b>City</b></td>
+            <td>{{ location["city"] }}</td> 
+        </tr>
+    </table>
+
+
+    <h3>Galleries of {{ location["city"] }}</h3>
+    <table>
+        {% for gallery in location["galleries"] %}
+        <tr>
+            <td>{{ gallery["gallery_name"] }}</td>
+        </tr>
+        <tr> 
+            <td>{{ gallery["information"] }}</td> 
+        </tr>
+        <tr>
+            <td>{{ gallery["fee"] }}</td>      
+        </tr>
+        <a href="{{ url_for('update_gallery', id=gallery.id) }}">Update Gallery</a><br>
+        <a href="{{ url_for('delete_gallery', id=gallery.id) }}">Delete Gallery</a><br>
+        {% endfor %}
+    </table>
+
+    {% endfor %}
+{% endblock body %}
