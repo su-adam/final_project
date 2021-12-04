@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Todo App - {{ title }}</title>
+        <title>Galleries and Cities</title>
     </head>
-    <body style="background-color: rgb(176, 211, 235);">
-        <h1>Todo App - {{ title }}</h1>
-        <p>
-            <a href="{{ url_for('home') }}">Home</a>
-            <a href="{{ url_for('create_task') }}">Add Task</a>
-        </p>
+    <body style="background-color: rgb(189, 204, 245);">
+        <h1>Galleries and Cities – {{ title }}</h1>
+        <a href="{{ url_for('create_location') }}">Add Country and City</a>
+        <a href="{{ url_for('create_gallery') }}">Add Gallery </a>
         {% block body %}
-        {% endblock body %}
+        {% endblock %}
     </body>
 </html>

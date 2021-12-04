@@ -1,62 +1,87 @@
 from application import app
-from application.forms import TaskForm
+from application.forms import CreatelocationForm, CreategalleryForm
 from flask import render_template, request, redirect, url_for, jsonify
 import requests
 
-backend_host = "todo-app_backend:5000"
+backend_host = "final_project_backend:5000"
+
 
 @app.route('/')
 @app.route('/home')
 def home():
-    all_tasks = requests.get(f"http://{backend_host}/read/allTasks").json()
-    app.logger.info(f"Tasks: {all_tasks}")
-    return render_template('index.html', title="Home", all_tasks=all_tasks["tasks"])
+    locations = requests.get(f"http://{backend_host}/read/allLocations").json()["locations"]
+    app.logger.info(f"Locations: {locations}")
+    return render_template('index.html', title="Home", locations=locations)
 
-@app.route('/create/task', methods=['GET','POST'])
-def create_task():
-    form = TaskForm()
+
+@app.route('/create/location', methods=['GET','POST'])
+def create_location():
+    form = CreatelocationForm()
 
     if request.method == "POST":
         response = requests.post(
-            f"http://{backend_host}/create/task",
-            json = {"description" : form.description.data}
+            f"http://{backend_host}/create/location",
+            json = {
+                "country_name" : form.country_name.data,
+                "city" : form.city.data
+                
+            }
         )
         app.logger.info(f"Response: {response.text}")
         return redirect(url_for('home'))
 
-    return render_template("create_task.html", title="Add a new Task", form=form)
+    return render_template("create_location.html", title="Select location", form=form)
 
 
 
-@app.route('/update/task/<int:id>', methods=['GET','POST'])
-def update_task(id):
-    form = TaskForm()
-    task = requests.get(f"http://{backend_host}/read/task{id}").json()
-    app.logger.info(f"Task : {task}")
+@app.route('/create/gallery', methods=['GET','POST'])
+def create_gallery():
+    form = CreategalleryForm()
+
+    json = requests.get(f"http://{backend_host}/read/allLocations").json()
+    for location in json["locations"]:
+        form.locations.choices.append(( location["id"] , location["city"]))
+
+    if request.method == "POST":
+        response = requests.post(
+            f"http://{backend_host}/create/gallery",
+            json = {
+                "gallery_name" : form.gallery_name.data,
+                "information" : form.information.data,
+                "fee" : form.fee.data,
+                "country_id" : form.locations.data
+            }
+        )
+        app.logger.info(f"Response: {response.text}")
+        return redirect(url_for('home'))
+
+    return render_template("create_gallery.html", title="Select location", form=form)
+
+@app.route('/update/gallery/<int:id>', methods=['GET','POST'])
+def update_gallery(id):
+    form = CreategalleryForm()
+    gallery = requests.get(f"http://{backend_host}/read/gallery/{id}").json()
+    app.logger.info(f"Gallery : {gallery}")
 
     if request.method == "POST":
         response = requests.put(
-            f"http://{backend_host}/update/task/{id}",
-            json = {"description" : form.description.data}
+            f"http://{backend_host}/update/gallery/{id}",
+            json = {
+                    "gallery_name" : form.gallery_name.data,
+                    "information" : form.information.data,
+                    "fee" : form.fee.data
+                    
+                }
         )
         return redirect(url_for('home'))
 
-    return render_template('update_task.html', task=task, form=form)
+    return render_template('update.html', gallery=gallery, form=form)
 
-@app.route('/delete/task/<int:id>')
-def delete_task(id):
-    response = requests.delete(f"http://{backend_host}/delete/task/{id}")
+
+
+@app.route('/delete/gallery/<int:id>')
+def delete_gallery(id):
+    response = requests.delete(f"http://{backend_host}/delete/gallery/{id}")
     app.logger.info(f"Response: {response.text}")
     return redirect(url_for('home'))
 
-@app.route('/complete/task/<int:id>')
-def complete_task(id):
-    response = requests.put(f"http://{backend_host}/complete /task/{id}")
-    app.logger.info(f"Response: {response.text}")
-    return redirect(url_for('home'))
-
-@app.route('/incomplete/task/<int:id>')
-def incomplete_task(id):
-    response = requests.put(f"http://{backend_host}/incomplete/task/{id}")
-    app.logger.info(f"Response: {response.text}")
-    return redirect(url_for('home'))
